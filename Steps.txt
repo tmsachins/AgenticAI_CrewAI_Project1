@@ -1,0 +1,8 @@
+
+
+conda activate crewaienv
+
+pip install crewai
+pip install crewai[tools]
+
+pip install python-dotenv langchain_openai langchain_community
