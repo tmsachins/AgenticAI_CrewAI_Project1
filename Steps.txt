@@ -4,5 +4,10 @@ conda activate crewaienv
 
 pip install crewai
 pip install crewai[tools]
+pip install tiktoken --prefer-binary
+
+pip install --upgrade pip
+
+pip install crewai[tools] chroma-hnswlib==0.7.5 chromadb==0.5.4
 
 pip install python-dotenv langchain_openai langchain_community
