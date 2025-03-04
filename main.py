@@ -1,9 +1,15 @@
 import os
-from dotenv import load_dotenv
+load_dotenv()
+os.environ["LANGTRACE_API_KEY"] = os.getenv("LANGTRACE_API_KEY")
+
+# Must precede any llm module imports
+from langtrace_python_sdk import langtrace
+langtrace.init(api_key = os.environ["LANGTRACE_API_KEY"])
+
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import SerperDevTool
 
-load_dotenv()
+
 
 os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
