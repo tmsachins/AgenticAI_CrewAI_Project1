@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 load_dotenv()
 os.environ["LANGTRACE_API_KEY"] = os.getenv("LANGTRACE_API_KEY")
 
