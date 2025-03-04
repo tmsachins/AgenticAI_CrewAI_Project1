@@ -1,10 +1,14 @@
 
-
+conda create -n crewaivenv python==3.10
 conda activate crewaienv
 
 pip install crewai
 pip install crewai[tools]
+pip install python-dotenv
+
+
 pip install tiktoken --prefer-binary
+
 
 pip install --upgrade pip
 

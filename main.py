@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from crewai import Agent, Task, Crew
+from crewai import Agent, Task, Crew, Process
 from crewai_tools import SerperDevTool
 # from langchain_openai import ChatOpenAI
 # from langchain_community.llms import Ollama
@@ -12,7 +12,7 @@ os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 print(os.environ["OPENAI_API_KEY"])
 search_tool = SerperDevTool()
 
-topic = "quantum computing"
+# topic = "quantum computing"
 
 # Creating a senior researcher agent with memory and verbose mode
 researcher = Agent(
@@ -70,3 +70,13 @@ write_task = Task(
     async_execution=False,
     output_file="new-blog-post.md"
 )
+
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[research_task, writing_task],
+    process=Process.sequential,
+    verbose=True,
+)
+
+result = crew.kickoff(inputs={'topic':'AI in healthcare'})
+print(results)
