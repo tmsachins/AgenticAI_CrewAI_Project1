@@ -2,8 +2,6 @@ import os
 from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import SerperDevTool
-# from langchain_openai import ChatOpenAI
-# from langchain_community.llms import Ollama
 
 load_dotenv()
 
@@ -73,10 +71,10 @@ write_task = Task(
 
 crew = Crew(
     agents=[researcher, writer],
-    tasks=[research_task, writing_task],
+    tasks=[research_task, write_task],
     process=Process.sequential,
     verbose=True,
 )
 
 result = crew.kickoff(inputs={'topic':'AI in healthcare'})
-print(results)
+print(result)
